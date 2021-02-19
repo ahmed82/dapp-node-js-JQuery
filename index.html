@@ -43,7 +43,7 @@
 
         web3.eth.defaultAccount = web3.eth.accounts[0];
 //The ABI from Remix -> run -> ABI
-        var CoursetroContract = web3.eth.contract([
+        var AhmedContract = web3.eth.contract([
 	{
 		"constant": false,
 		"inputs": [
@@ -82,10 +82,10 @@
 	}
 ]);
 //The address from Remix -> compailer 
-        var Coursetro = CoursetroContract.at('0xC30e5D5C5f05ff41718a20cf19CEd978111a9B13');
-        console.log(Coursetro);
+        var AhmedCntrct = AhmedContract.at('0x469d17CbD1Ed00bB479f4c22DA02b16a0B92e9dc');
+        console.log(AhmedContract);
 
-        Coursetro.getInstructor(function(error, result){
+        AhmedCntrct.getInstructor(function(error, result){
             if(!error)
                 {
                     $("#instructor").html(result[0]+' ('+result[1]+' years old)');
@@ -96,7 +96,7 @@
         });
 
         $("#button").click(function() {
-            Coursetro.setInstructor($("#name").val(), $("#age").val());
+            AhmedCntrct.setInstructor($("#name").val(), $("#age").val());
         });
 
     </script>
