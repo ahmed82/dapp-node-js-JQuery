@@ -30,8 +30,8 @@
 
     </div>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+   <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script>
 
         if (typeof web3 !== 'undefined') {
@@ -44,67 +44,13 @@
 
         web3.eth.defaultAccount = web3.eth.accounts[0];
 //The ABI from Remix -> run -> ABI
-        var AhmedContract = web3.eth.contract([
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_fName",
-				"type": "string"
-			},
-			{
-				"name": "_age",
-				"type": "uint256"
-			}
-		],
-		"name": "setInstructor",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getInstructor",
-		"outputs": [
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "age",
-				"type": "uint256"
-			}
-		],
-		"name": "Instructor",
-		"type": "event"
-	}
-]);
+        var AhmedContract = web3.eth.contract([ { "constant": false, "inputs": [ { "name": "_fName", "type": "string" }, { "name": "_age", "type": "uint256" } ], "name": "setInstructor", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "getInstructor", "outputs": [ { "name": "", "type": "string" }, { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [], "name": "Instructor", "type": "event" } ]);
 //The address from Remix -> compailer 
-        var AhmedCntrct = AhmedContract.at('0xBA05F708515Ff7dE4b97C8cc321BC1dC9Cd181E1');
+        var AhmedCntrct = AhmedContract.at('0x1Ef346455c22F131a1A608879d8Dc069b85751a6');
         console.log(AhmedCntrct);
         // Replace the AhmedCntrct.getInstructor() lines with this line:
         var instructorEvent = AhmedCntrct.Instructor();
-     /*    AhmedCntrct.getInstructor(function(error, result){
+        /*    AhmedCntrct.getInstructor(function(error, result){
             if(!error)
                 {
                     $("#instructor").html(result[0]+' ('+result[1]+' years old)');
@@ -112,8 +58,9 @@
                 }
             else
                 console.error(error);
-        }); */
+        });  */
         instructorEvent.watch(function(error, result) {
+          console.log("############# Even emitted ");
             if (!error){
                     $("#loader").hide();
                     $("#instructor").html(result.args.name + ' (' + result.args.age + ' years old)');
@@ -121,11 +68,20 @@
                     $("#loader").hide();
                     console.log(error);
                 }
-        });
+        });  
 
         $("#button").click(function () {
-            AhmedCntrct.setInstructor($("#name").val(), $("#age").val());
-            $("#loader").show();
+             console.log("#######66###### ");
+             $("#loader").show();
+             // Previous code
+            /* AhmedCntrct.setInstructor($("#name").val(), $("#age").val()); */
+            // Change ^-that to this:
+            AhmedCntrct.setInstructor($("#name").val(), $("#age").val(), (err, res) => {
+                if (err) {
+                    $("#loader").hide();
+                    console.log('oh no');
+                }
+            });
         });
 
     </script>
