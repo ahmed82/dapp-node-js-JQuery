@@ -1,21 +1,25 @@
 # dapp-node-js-JQuery
 
 
-Build Daap from scratch
-Installing & Running the Ethereum TestRPC
+## Build Daap from scratch
+### Installing & Running the Ethereum TestRPC.
 ‘testrpc’ is a Node.js based Ethereum client for testing and development. It uses ethereumjs to simulate full client behavior and make developing Ethereum applications much faster. It also includes all popular RPC functions and features (like events) and can be run deterministically to make development a breeze.
-https://www.npmjs.com/package/ethereumjs-testrpc
+
+` https://www.npmjs.com/package/ethereumjs-testrpc`
+```
 $ npm install -g ethereumjs-testrpc
 $ testrpc
-Web3
-web3.js is a collection of libraries that allow you to interact with a local or remote ethereum node using HTTP, IPC or WebSocket.
-https://web3js.readthedocs.io/en/v1.3.0/
+```
+## Web3
+`web3.js` is a collection of libraries that allow you to interact with a local or remote ethereum node using HTTP, IPC or WebSocket.
+
+ https://web3js.readthedocs.io/en/v1.3.0/
 •	Create contract.
 •	Send transaction.
 •	Get current block. Etc.
-Installing Web3.js
+### Installing Web3.js
 Web3.js is the official Ethereum Javascript API. You use it to interact with your Ethereum smart contracts.
-1-	create a package.json file, which will store project dependencies:
+1. create a package.json file, which will store project dependencies:
 Initialize new node Js application by:
 ```
 $ npm init
@@ -32,7 +36,7 @@ Above dependency are causing issue, solution:
 ```
 $ npm install  web3@0.20.1 -save
 ```
-Create connection to the Smart contract.
+### Create connection to the Smart contract.
 ```javascript
 <script>
 
@@ -66,6 +70,8 @@ You may be wondering, how would web3 be defined? Well, if you're using the Chrom
 Next, we have to specify a default ethereum account to use through the web3.eth.defaultAccount method:
 The Create button was changed to Deploy on Remix.
 
-To integrate with Meta Mask // it is work just like express server on JS app
-Install Lite-server:
+To integrate with Meta Mask // it is work just like express server on JS app.
+### Install Lite-server:
+```
 npm install lite-server --save-dev
+```
