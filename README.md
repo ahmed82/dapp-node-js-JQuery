@@ -17,15 +17,23 @@ Installing Web3.js
 Web3.js is the official Ethereum Javascript API. You use it to interact with your Ethereum smart contracts.
 1-	create a package.json file, which will store project dependencies:
 Initialize new node Js application by:
+```
 $ npm init
-
+```
 Hit enter through all the prompts. Next, run the following command to install web3.js:
+```
 $ npm install ethereum/web3.js –save
+```
 Or 
+```
 $ npm I web3 -save
+```
 Above dependency are causing issue, solution:
+```
 $ npm install  web3@0.20.1 -save
+```
 Create connection to the Smart contract.
+```javascript
 <script>
 
         if (typeof web3 !== 'undefined') {
@@ -44,9 +52,9 @@ Create connection to the Smart contract.
         console.log(Ahmedctr);
 
     </script>
+```
 
-
-INFURA
+## INFURA
 Ethereum Node like Infura and Geth 
 Using Web3.js to Connect & Interact with the Smart Contract
 Going back to the index.html, at the bottom of the file we have an empty <script> tag. This is where we will write the necessary code to work with our smart contract.
@@ -56,9 +64,8 @@ This code comes directly from the Web3.js Github page.
 It's saying that if web3 is not undefined, then we'll use that as our provider. If it's undefined (else), we can manually specify the provider ourselves.
 You may be wondering, how would web3 be defined? Well, if you're using the Chrome extension MetaMask (which we will use later in this course) or an Ethereum browser like Mist, the provider is automatically injected.
 Next, we have to specify a default ethereum account to use through the web3.eth.defaultAccount method:
-The Create button was changed to Deploy on Remix
---
+The Create button was changed to Deploy on Remix.
 
-To integrate with Meta Mask 
+To integrate with Meta Mask // it is work just like express server on JS app
 Install Lite-server:
 npm install lite-server --save-dev
